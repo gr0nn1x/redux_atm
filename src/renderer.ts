@@ -25,10 +25,13 @@
  *  });
  * ```
  */
+const win = new BrowserWindow({ width: 800, height: 600 });
+import "./index.css";
 
-import './index.css';
-
-console.log('👋 This message is being logged by "renderer.ts", included via Vite');
+console.log(
+  '👋 This message is being logged by "renderer.ts", included via Vite'
+);
 
 // Add this to the end of the existing file
-import './app';
+import "./app";
+import { BrowserWindow } from "electron";

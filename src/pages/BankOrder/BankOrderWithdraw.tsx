@@ -20,7 +20,7 @@ export default function BankOrderWithdraw() {
         <h3>Zpět</h3>
       </Link>
       <form>
-        <input type="number" placeholder="Zadejte částku" onChange={change} />
+        <input type="number" placeholder="Zadejte částku" onChange={change}className="maininput" />
       </form>
       <Link to={""}>
         <input type="submit" value="Vybrat" onClick={sumbit}></input>
