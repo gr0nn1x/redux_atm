@@ -1,0 +1,11 @@
+.whole {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  column-gap: 1em;
+  text-decoration: none;
+}
+
+.black {
+  color: black;
+}
