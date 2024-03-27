@@ -5,25 +5,29 @@ import { Link } from "react-router-dom";
 import { BankType } from "./BankSlice";
 import "./Bank.css";
 
+interface BigDecimal {
+  value: string;
+}
+
 export default function BankOrderWithdraw() {
   const count = useSelector((state: BankType) => state.bank.counter);
   const dispatch = useDispatch();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState<BigDecimal>({ value: "0" });
   const [text, setText] = useState(false);
   const [textb, setTextb] = useState(false);
 
   const sumbit = (e: React.FormEvent) => {
-    if (value <= count) {
+    if (parseFloat(value.value) <= parseFloat(count.value)) {
       dispatch(remove(value));
       setTextb(true);
     }
-    if (value < 0) {
+    if (parseFloat(value.value) < 0) {
       setText(true);
     }
   };
 
   const change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.valueAsNumber);
+    setValue({ value: e.target.value });
   };
 
   return (
@@ -51,7 +55,7 @@ export default function BankOrderWithdraw() {
           ></input>
         </Link>
         {text && <p>Zadána nevybratelná hodnota</p>}
-        {textb && <p>částka Vybrána</p>}
+        {textb && <p>Částka vybrána</p>}
       </p>
     </>
   );

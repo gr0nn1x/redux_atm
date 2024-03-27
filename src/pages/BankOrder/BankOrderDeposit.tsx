@@ -2,25 +2,30 @@ import { useState } from "react";
 import { add } from "./BankSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import "./Bank.css"
+import "./Bank.css";
+
+interface BigDecimal {
+  value: string;
+}
 
 export default function BankOrderDeposit() {
   const dispatch = useDispatch();
   const [text, setText] = useState(false);
   const [textb, setTextb] = useState(false);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState<BigDecimal>({ value: "0" }); 
+
   const sumbit = (e: React.FormEvent) => {
-    if (value > 0) {
+    if (parseFloat(value.value) > 0) { 
       dispatch(add(value));
       setTextb(true);
     }
-    if (value < 0) {
+    if (parseFloat(value.value) < 0) { 
       setText(true);
     }
   };
 
   const change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.valueAsNumber);
+    setValue({ value: e.target.value });
   };
 
   return (
