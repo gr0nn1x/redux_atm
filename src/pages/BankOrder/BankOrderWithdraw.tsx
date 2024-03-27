@@ -8,7 +8,6 @@ import "./Bank.css";
 interface BigDecimal {
   value: string;
 }
-
 export default function BankOrderWithdraw() {
   const count = useSelector((state: BankType) => state.bank.counter);
   const dispatch = useDispatch();
